@@ -1,4 +1,4 @@
- name: Deploy Aha Clone App
+name: Deploy Aha Clone App
 
 on:
   push:
@@ -19,11 +19,11 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
-          script: |https://github.com/rayudumanichand/aha-clone.git && cd aha-clone
+          script: |
             echo "Connected to VM"
 
-            # Go to project directory
-            cd ~/aha-clone || git clone 
+            # Clone if not exists, else go inside
+            cd ~/aha-clone || git clone https://github.com/rayudumanichand/aha-clone.git && cd aha-clone
 
             # Pull latest changes
             git pull origin main
